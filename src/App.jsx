@@ -9,7 +9,7 @@ function Button(props) {
   )
 }
 export default function App() {
-  const [todos, setTodods] = useState([
+  const [todos, setTodos] = useState([
     {title:'Ngopi',desc:'Ngopi bareng pak eko sambil ngomongin masa depan.'}
   ]);
   const inputRefTitle = useRef(null);
@@ -22,7 +22,7 @@ export default function App() {
       alert('kolom harus Diisi...!');
       return
     };
-    setTodods(prev => [...prev,{title:newTitle,desc:newDesc}]);
+    setTodos(prev => [...prev,{title:newTitle,desc:newDesc}]);
     alert('Tugas Berhasil ditambahkan ✅')
     inputRefTitle.current.value="";
     inputRefDesc.current.value="";
@@ -30,7 +30,7 @@ export default function App() {
   // Delete Function
   function handleDelete(index) {
     if (window.confirm("Yakin ingin menghapus tugas ini..?") == true) {
-      setTodods(prev => prev.filter((_,i) => i != index));
+      setTodos(prev => prev.filter((_,i) => i != index));
       alert('Tugas Dihapus ✅');
     }
   }
@@ -39,7 +39,7 @@ export default function App() {
     const newTitle = prompt('Ubah Titlenya');
     const newDesc = prompt('Ubah Descripsinya');
     if (newTitle && newDesc) {
-      setTodods(prev =>(prev.map((item,i) => 
+      setTodos(prev =>(prev.map((item,i) => 
         i === index ? {...item,title: newTitle,desc: newDesc} : item
       )))
     }
